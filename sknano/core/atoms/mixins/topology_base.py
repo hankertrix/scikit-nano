@@ -13,7 +13,8 @@ __docformat__ = 'restructuredtext en'
 
 import numbers
 from abc import ABCMeta, abstractmethod
-from collections import Iterable, namedtuple
+from collections.abc import Iterable
+from collections import namedtuple
 from functools import total_ordering
 from operator import attrgetter
 

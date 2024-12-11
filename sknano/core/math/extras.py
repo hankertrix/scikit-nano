@@ -11,7 +11,7 @@ from __future__ import absolute_import, division, print_function
 from __future__ import unicode_literals
 __docformat__ = 'restructuredtext en'
 
-from fractions import gcd
+from math import gcd
 import operator
 
 import numpy as np

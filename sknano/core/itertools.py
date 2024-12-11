@@ -21,7 +21,7 @@ from __future__ import absolute_import, division, print_function, \
     unicode_literals
 __docformat__ = 'restructuredtext en'
 
-from collections import Iterable
+from collections.abc import Iterable
 from operator import itemgetter
 
 import operator

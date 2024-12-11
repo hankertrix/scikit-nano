@@ -47,8 +47,9 @@ def load_fullerene_data():
         point_groups = dataset['point_groups'] = []
         # isomer_numbers = dataset['isomer_numbers'] = []
 
-        for f in files:
-            s = os.path.splitext(f)[0].split('-')
+        for file_path in files:
+            file_name = os.path.basename(file_path)
+            s = os.path.splitext(file_name)[0].split('-')
             if len(s) == 3:
                 _, PG, Niso = s
                 Niso = int(Niso)
@@ -68,9 +69,9 @@ def load_fullerene_data():
                 pg_files = pg_dataset['files'] = []
                 pg_isomer_numbers = pg_dataset['isomer_numbers'] = []
 
-            pg_files.append(f)
+            pg_files.append(file_path)
             pg_isomer_numbers.append(Niso)
-            pg_dataset[Niso] = f
+            pg_dataset[Niso] = file_path
 
         dataset['point_groups'] = \
             [t[0] for t in sorted(pg_counter.most_common(),
