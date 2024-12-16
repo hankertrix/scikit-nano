@@ -53,7 +53,7 @@ class PDBReader(StructureData):
         # formatter = self.formatter
 
         self.structure.clear()
-        with zopen(self.fpath) as f:
+        with zopen(self.fpath, encoding='utf-8') as f:
             while True:
                 line = f.readline().strip()
                 record = line[:6].strip()
@@ -161,7 +161,7 @@ class PDBData(PDBReader):
             mode += 't'
 
             try:
-                with zopen(pdbfile, mode) as stream:
+                with zopen(pdbfile, mode, encoding='utf-8') as stream:
                     self._write_header(stream, comment_line)
                     self._write_atoms(stream)
             except OSError as e:

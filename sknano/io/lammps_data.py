@@ -105,7 +105,7 @@ class DATAReader(StructureData):
         """Read data file."""
         self.structure.clear()
         try:
-            with zopen(self.fpath) as f:
+            with zopen(self.fpath, encoding='utf-8') as f:
                 self.comment_line = f.readline().strip()
 
                 while True:
@@ -570,7 +570,7 @@ class DATAData(DATAReader):
             self._update_attr_fmtstr_widths()
 
             try:
-                with zopen(datafile, 'wt') as stream:
+                with zopen(datafile, 'wt', encoding='utf-8') as stream:
                     self._write_header(stream, comment_line)
                     self._write_domain(stream)
                     [getattr(self, '_write_' + section.lower())(stream)

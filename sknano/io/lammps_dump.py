@@ -241,7 +241,7 @@ class DUMPReader(StructureData):
         """Read all snapshots from each dump file."""
         trajectory = self.trajectory
         for dumpfile in self.dumpfiles:
-            with zopen(dumpfile) as f:
+            with zopen(dumpfile, encoding='utf-8') as f:
                 try:
                     snapshot = self.read_snapshot(f)
                     while snapshot is not None:
@@ -792,7 +792,7 @@ class DUMPData(DUMPReader):
 
                 mode += 't'
 
-                with zopen(dumpfile, mode) as stream:
+                with zopen(dumpfile, mode, encoding='utf-8') as stream:
                     if snapshot is not None:
                         ss = trajectory.get_snapshot(snapshot.timestep)
                         if write_header:

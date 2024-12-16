@@ -47,7 +47,7 @@ class XYZReader(StructureData):
     def read(self):
         """Read `xyz` file."""
         self.structure.clear()
-        with zopen(self.fpath) as stream:
+        with zopen(self.fpath, encoding='utf-8') as stream:
             Natoms = int(stream.readline().strip())
             self.comment_line = stream.readline().strip()
             lines = stream.readlines()
@@ -160,7 +160,7 @@ class XYZData(XYZReader):
             super()._update_structure(**kwargs)
 
             try:
-                with zopen(xyzfile, 'wt') as stream:
+                with zopen(xyzfile, 'wt', encoding='utf-8') as stream:
                     self._write_header(stream, comment_line)
                     self._write_atoms(stream)
             except OSError as e:
